@@ -1,0 +1,42 @@
+const relogio = document.querySelector('.relogio');
+const iniciar = document.querySelector('.iniciar');
+const pausar = document.querySelector('.pausar');
+const zerar = document.querySelector('.zerar');
+
+let segundos = 0;
+let timer;
+
+function iniciaRelogio() {
+    timer = setInterval(function () {
+        segundos++;
+        relogio.innerHTML = criaHoraSegundos(segundos);
+    }, 1000);
+}
+
+function criaHoraSegundos(segundos) {
+    const data = new Date(segundos * 1000);
+    return data.toLocaleTimeString('pt-BR', {
+        hour12: false,
+        timeZone: 'UTC'
+    });
+}
+
+document.addEventListener('click', function (e) {
+    const el = e.target;
+    if (el.classList.contains('iniciar')) {
+        clearInterval(timer);
+        iniciaRelogio();
+        relogio.style.color = '#000000'
+    }
+
+    if (el.classList.contains('pausar')) {
+        clearInterval(timer);
+        relogio.style.color = 'red';
+    }
+
+    if (el.classList.contains('zerar')) {
+        clearInterval(timer);
+        relogio.innerText = '00:00:00';
+        segundos = 0;
+    }
+})
