@@ -1,0 +1,1 @@
+// Funções callback são funcoes que sao executadas quando uma ação ocorre

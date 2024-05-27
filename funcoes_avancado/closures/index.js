@@ -1,0 +1,1 @@
+// Closure é a habilidade dessa função em acessar seu escopo léxico
